@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package uuid="robozinho-dadd4f" version="0.0.0">
+<package version="0.0.0" uuid="robozinho-dadd4f">
  <names>
   <name lang="en_US">Robozinho</name>
  </names>
@@ -24,6 +24,11 @@
    <permissions/>
   </behaviorContent>
   <behaviorContent path="ola">
+   <nature>interactive</nature>
+   <autonomous/>
+   <permissions/>
+  </behaviorContent>
+  <behaviorContent path="PCV">
    <nature>interactive</nature>
    <permissions/>
   </behaviorContent>

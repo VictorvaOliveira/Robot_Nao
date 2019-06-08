@@ -5,6 +5,7 @@
         <BehaviorDescription name="behavior" src="behavior_1" xar="behavior.xar" />
         <BehaviorDescription name="behavior" src="TudoBem_Animation" xar="behavior.xar" />
         <BehaviorDescription name="behavior" src="ola" xar="behavior.xar" />
+        <BehaviorDescription name="behavior" src="PCV" xar="behavior.xar" />
     </BehaviorDescriptions>
     <Dialogs />
     <Resources>
