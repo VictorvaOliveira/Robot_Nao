@@ -7,10 +7,12 @@
         <BehaviorDescription name="behavior" src="ola" xar="behavior.xar" />
         <BehaviorDescription name="behavior" src="PCV" xar="behavior.xar" />
         <BehaviorDescription name="behavior" src="PSA" xar="behavior.xar" />
+        <BehaviorDescription name="behavior" src="Imitar_elefante" xar="behavior.xar" />
     </BehaviorDescriptions>
     <Dialogs />
     <Resources>
         <File name="elephant" src="behavior_1/elephant.ogg" />
+        <File name="elephant" src="Imitar_elefante/elephant.ogg" />
     </Resources>
     <Topics />
     <IgnoredPaths />

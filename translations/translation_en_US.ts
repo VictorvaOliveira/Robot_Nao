@@ -4,10 +4,9 @@
     <context>
         <name>TudoBem_Animation/behavior.xar:/Say</name>
         <message>
-            <location filename="TudoBem_Animation/behavior.xar" line="0"/>
             <source>Tudo bem ?</source>
             <comment>Text</comment>
-            <translation type="unfinished">Tudo bem ?</translation>
+            <translation type="obsolete">Tudo bem ?</translation>
         </message>
     </context>
     <context>

@@ -15,7 +15,7 @@
       <BehaviorLayer name="behavior_layer1">
         <BehaviorKeyframe name="keyframe1" index="1">
           <Diagram>
-            <Box name="Encolher braço" id="1" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="269" y="45">
+            <Box name="Encolher braço" id="1" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="223" y="161">
               <bitmap>media/images/box/movement/move.png</bitmap>
               <script language="4">
                 <content>
@@ -40,7 +40,7 @@
               </Timeline>
               <Resource name="Arms" type="Lock" timeout="0" />
             </Box>
-            <Box name="Levantar Braço" id="4" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="152" y="42">
+            <Box name="Levantar Braço" id="4" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="200" y="33">
               <bitmap>media/images/box/movement/move.png</bitmap>
               <script language="4">
                 <content>
@@ -79,7 +79,7 @@
                 </ActuatorList>
               </Timeline>
             </Box>
-            <Box name="Abrir mão" id="5" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="401" y="46">
+            <Box name="Abrir mão" id="5" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="374" y="46">
               <bitmap>media/images/box/movement/move.png</bitmap>
               <script language="4">
                 <content>
@@ -103,64 +103,7 @@
                 </ActuatorList>
               </Timeline>
             </Box>
-            <Box name="Say" id="2" localization="8" tooltip="Say some text. The text can be localized." x="281" y="195">
-              <bitmap>media/images/box/interaction/say.png</bitmap>
-              <script language="4">
-                <content>
-                  <![CDATA[import time
-
-class MyClass(GeneratedClass):
-    def __init__(self):
-        GeneratedClass.__init__(self, False)
-
-    def onLoad(self):
-        self.tts = self.session().service('ALTextToSpeech')
-        self.ttsStop = self.session().service('ALTextToSpeech') #Create another service as wait is blocking if audioout is remote
-        self.bIsRunning = False
-        self.ids = []
-
-    def onUnload(self):
-        for id in self.ids:
-            try:
-                self.ttsStop.stop(id)
-            except:
-                pass
-        while( self.bIsRunning ):
-            time.sleep( 0.2 )
-
-    def onInput_onStart(self):
-        self.bIsRunning = True
-        try:
-            sentence = "\RSPD="+ str( self.getParameter("Speed (%)") ) + "\ "
-            sentence += "\VCT="+ str( self.getParameter("Voice shaping (%)") ) + "\ "
-            sentence += self.getParameter("Text")
-            sentence +=  "\RST\ "
-            id = self.tts.pCall("say",str(sentence))
-            self.ids.append(id)
-            self.tts.wait(id)
-        finally:
-            try:
-                self.ids.remove(id)
-            except:
-                pass
-            if( self.ids == [] ):
-                self.onStopped() # activate output of the box
-                self.bIsRunning = False
-
-    def onInput_onStop(self):
-        self.onUnload()]]>
-                </content>
-              </script>
-              <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" />
-              <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this Input." id="2" />
-              <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this Input." id="3" />
-              <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when Box behavior is finished." id="4" />
-              <Parameter name="Voice shaping (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="150" tooltip='Used to modify at runtime the voice feature (tone, speed). In a slighty&#x0A;different way than pitch and speed, it gives a kind of &quot;gender or age&#x0A;modification&quot; effect.&#x0A;&#x0A;For instance, a quite good male derivation of female voice can be&#x0A;obtained setting this parameter to 78%.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the&#x0A;speed parameter. For example, if you want to decrease by 20% the voice&#x0A;shaping, you will have to increase by 20% the speed to keep a constant&#x0A;average speed.' id="5" />
-              <Parameter name="Speed (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="200" tooltip="Changes the speed of the voice.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the voice&#x0A;shaping parameter. For example, if you want to increase by 20% the speed, you&#x0A;will have to decrease by 20% the voice shaping to keep a constant average&#x0A;speed." id="6" />
-              <Parameter name="Text" inherits_from_parent="0" content_type="5" value="Tudo bem ?" default_value="" tooltip="The text you want to say. Don&apos;t forget to translate it!" id="7" />
-              <Resource name="Speech" type="Lock" timeout="0" />
-            </Box>
-            <Box name="OI_tentativa" id="3" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="108" y="213">
+            <Box name="OI_tentativa" id="3" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="62" y="21">
               <bitmap>media/images/box/movement/move.png</bitmap>
               <script language="4">
                 <content>
@@ -200,7 +143,7 @@ class MyClass(GeneratedClass):
                 </ActuatorList>
               </Timeline>
             </Box>
-            <Box name="Prazer" id="6" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="406" y="455">
+            <Box name="Prazer" id="6" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="281" y="290">
               <bitmap>media/images/box/movement/move.png</bitmap>
               <script language="4">
                 <content>
@@ -211,7 +154,7 @@ class MyClass(GeneratedClass):
               <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
               <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
               <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
-              <Timeline enable="1" fps="15" start_frame="1" end_frame="-1" size="23">
+              <Timeline enable="1" fps="10" start_frame="1" end_frame="-1" size="23">
                 <BehaviorLayer name="behavior_layer1">
                   <BehaviorKeyframe name="keyframe1" index="1">
                     <Diagram />
@@ -242,7 +185,7 @@ class MyClass(GeneratedClass):
                 </ActuatorList>
               </Timeline>
             </Box>
-            <Box name="Encontrar" id="7" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="553" y="469">
+            <Box name="Encontrar" id="7" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="361" y="418">
               <bitmap>media/images/box/movement/move.png</bitmap>
               <script language="4">
                 <content>
@@ -253,7 +196,7 @@ class MyClass(GeneratedClass):
               <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
               <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
               <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
-              <Timeline enable="1" fps="15" start_frame="1" end_frame="-1" size="41">
+              <Timeline enable="1" fps="10" start_frame="1" end_frame="-1" size="41">
                 <BehaviorLayer name="behavior_layer1">
                   <BehaviorKeyframe name="keyframe1" index="1">
                     <Diagram />
@@ -308,7 +251,7 @@ class MyClass(GeneratedClass):
                 </ActuatorList>
               </Timeline>
             </Box>
-            <Box name="Você" id="8" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="715" y="477">
+            <Box name="Você" id="8" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="512" y="421">
               <bitmap>media/images/box/movement/move.png</bitmap>
               <script language="4">
                 <content>
@@ -319,7 +262,7 @@ class MyClass(GeneratedClass):
               <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
               <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
               <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
-              <Timeline enable="1" fps="15" start_frame="1" end_frame="-1" size="21">
+              <Timeline enable="1" fps="10" start_frame="1" end_frame="-1" size="21">
                 <BehaviorLayer name="behavior_layer1">
                   <BehaviorKeyframe name="keyframe1" index="1">
                     <Diagram />
@@ -349,7 +292,7 @@ class MyClass(GeneratedClass):
                 </ActuatorList>
               </Timeline>
             </Box>
-            <Box name="Stand Up" id="9" localization="8" tooltip="the robot tries to stand up from any position for a number of tries.&#x0A;&#x0A;Note: The number of tries can be set in parameters." x="546" y="621">
+            <Box name="Stand Up" id="9" localization="8" tooltip="the robot tries to stand up from any position for a number of tries.&#x0A;&#x0A;Note: The number of tries can be set in parameters." x="440" y="289">
               <bitmap>media/images/box/movement/stand.png</bitmap>
               <script language="4">
                 <content>
@@ -428,7 +371,7 @@ class MyClass(GeneratedClass):
               </Timeline>
               <Resource name="Arms" type="Lock" timeout="0" />
             </Box>
-            <Box name="Stand Up (1)" id="10" localization="8" tooltip="the robot tries to stand up from any position for a number of tries.&#x0A;&#x0A;Note: The number of tries can be set in parameters." x="560" y="209">
+            <Box name="Stand Up (1)" id="10" localization="8" tooltip="the robot tries to stand up from any position for a number of tries.&#x0A;&#x0A;Note: The number of tries can be set in parameters." x="146" y="408">
               <bitmap>media/images/box/movement/stand.png</bitmap>
               <script language="4">
                 <content>
@@ -507,7 +450,7 @@ class MyClass(GeneratedClass):
               </Timeline>
               <Resource name="Arms" type="Lock" timeout="0" />
             </Box>
-            <Box name="Podemos" id="11" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="877" y="487">
+            <Box name="Podemos" id="11" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="189" y="745">
               <bitmap>media/images/box/movement/move.png</bitmap>
               <script language="4">
                 <content>
@@ -518,7 +461,7 @@ class MyClass(GeneratedClass):
               <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
               <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
               <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
-              <Timeline enable="1" fps="15" start_frame="1" end_frame="42" size="42">
+              <Timeline enable="1" fps="10" start_frame="1" end_frame="42" size="42">
                 <BehaviorLayer name="behavior_layer1">
                   <BehaviorKeyframe name="keyframe1" index="1">
                     <Diagram />
@@ -572,7 +515,7 @@ class MyClass(GeneratedClass):
                 </ActuatorList>
               </Timeline>
             </Box>
-            <Box name="ser" id="12" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="880" y="363">
+            <Box name="ser" id="12" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="316" y="634">
               <bitmap>media/images/box/movement/move.png</bitmap>
               <script language="4">
                 <content>
@@ -623,7 +566,7 @@ class MyClass(GeneratedClass):
                 </ActuatorList>
               </Timeline>
             </Box>
-            <Box name="Amigos" id="13" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="835" y="237">
+            <Box name="Amigos" id="13" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="395" y="742">
               <bitmap>media/images/box/movement/move.png</bitmap>
               <script language="4">
                 <content>
@@ -634,7 +577,7 @@ class MyClass(GeneratedClass):
               <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
               <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
               <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
-              <Timeline enable="1" fps="25" start_frame="1" end_frame="79" size="79">
+              <Timeline enable="1" fps="15" start_frame="1" end_frame="79" size="79">
                 <BehaviorLayer name="behavior_layer1">
                   <BehaviorKeyframe name="keyframe1" index="1">
                     <Diagram />
@@ -668,7 +611,644 @@ class MyClass(GeneratedClass):
                 </ActuatorList>
               </Timeline>
             </Box>
-            <Box name="Stand Up (2)" id="14" localization="8" tooltip="the robot tries to stand up from any position for a number of tries.&#x0A;&#x0A;Note: The number of tries can be set in parameters." x="736" y="629">
+            <Box name="Stand Up (2)" id="14" localization="8" tooltip="the robot tries to stand up from any position for a number of tries.&#x0A;&#x0A;Note: The number of tries can be set in parameters." x="591" y="299">
+              <bitmap>media/images/box/movement/stand.png</bitmap>
+              <script language="4">
+                <content>
+                  <![CDATA[]]>
+                </content>
+              </script>
+              <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+              <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+              <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+              <Output name="success" type="1" type_size="1" nature="1" inner="0" tooltip="Stimulated when the robot succeed in standing up." id="4" />
+              <Output name="failure" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when the robot failed to stand up after n tries.&#x0A;&#x0A;Note: The number of tries can be set in parameters." id="5" />
+              <Parameter name="Maximum of tries" inherits_from_parent="0" content_type="1" value="3" default_value="3" min="0" max="10" tooltip="The maximum number of fails of stand up before stimulating the failure output." id="6" />
+              <Timeline enable="0">
+                <BehaviorLayer name="StandUpBehavior">
+                  <BehaviorKeyframe name="DetectRobotPose" index="1">
+                    <Diagram>
+                      <Box name="Goto Posture" id="2" localization="8" tooltip="The robot goes from its current postition to the asked posture." x="331" y="92">
+                        <bitmap>media/images/box/box-diagram.png</bitmap>
+                        <script language="4">
+                          <content>
+                            <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+
+    def onLoad(self):
+        self.nTries = 0
+        self.postureService = self.session().service("ALRobotPosture")
+        pass
+
+    def onUnload(self):
+        self.postureService.stopMove()
+
+    def onInput_onStart(self):
+        if(self.nTries != self.getParameter("Maximum of tries")):
+            self.nTries = self.getParameter("Maximum of tries")
+            self.postureService.setMaxTryNumber(self.nTries)
+
+        result = self.postureService.goToPosture(self.getParameter("Name"), self.getParameter("Speed (%)")/100.)
+        if(result):
+            self.success()
+        else:
+            self.failure()
+        pass
+
+    def onInput_onStop(self):
+        self.onUnload() #~ it is recommanded to call onUnload of this box in a onStop method, as the code written in onUnload is used to stop the box as well
+        pass]]>
+                          </content>
+                        </script>
+                        <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                        <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+                        <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+                        <Output name="success" type="1" type_size="1" nature="1" inner="0" tooltip="Stimulated if the posture has been reached." id="4" />
+                        <Output name="failure" type="1" type_size="1" nature="1" inner="0" tooltip="Stimulated if the posture could not be reached." id="5" />
+                        <Parameter name="Name" inherits_from_parent="0" content_type="3" value="Stand" default_value="Stand" custom_choice="1" tooltip="Name of the posture to go to." id="6">
+                          <Choice value="Crouch" />
+                          <Choice value="LyingBack" />
+                          <Choice value="LyingBelly" />
+                          <Choice value="Sit" />
+                          <Choice value="SitRelax" />
+                          <Choice value="StandInit" />
+                          <Choice value="Stand" />
+                          <Choice value="StandZero" />
+                        </Parameter>
+                        <Parameter name="Speed (%)" inherits_from_parent="0" content_type="1" value="80" default_value="80" min="0" max="100" tooltip="Speed to go to the posture." id="7" />
+                        <Parameter name="Maximum of tries" inherits_from_parent="1" content_type="1" value="3" default_value="3" min="0" max="10" tooltip="The maximum number of fails of go to posture before stimulating the failure output." id="8" />
+                        <Resource name="All motors" type="Lock" timeout="0" />
+                        <Resource name="Stiffness" type="Lock" timeout="0" />
+                      </Box>
+                      <Link inputowner="2" indexofinput="2" outputowner="0" indexofoutput="2" />
+                      <Link inputowner="0" indexofinput="4" outputowner="2" indexofoutput="4" />
+                      <Link inputowner="0" indexofinput="5" outputowner="2" indexofoutput="5" />
+                    </Diagram>
+                  </BehaviorKeyframe>
+                </BehaviorLayer>
+              </Timeline>
+              <Resource name="Arms" type="Lock" timeout="0" />
+            </Box>
+            <Box name="Eu sei" id="15" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="555" y="749">
+              <bitmap>media/images/box/movement/move.png</bitmap>
+              <script language="4">
+                <content>
+                  <![CDATA[]]>
+                </content>
+              </script>
+              <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+              <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+              <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+              <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
+              <Timeline enable="1" fps="15" start_frame="1" end_frame="51" size="51">
+                <BehaviorLayer name="behavior_layer1">
+                  <BehaviorKeyframe name="keyframe1" index="1">
+                    <Diagram />
+                  </BehaviorKeyframe>
+                </BehaviorLayer>
+                <ActuatorList model="nao">
+                  <ActuatorCurve name="" actuator="RElbowRoll" mute="0" unit="0">
+                    <Key frame="23" value="88.5" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="" actuator="RShoulderPitch" mute="0" unit="0">
+                    <Key frame="13" value="7.7" />
+                  </ActuatorCurve>
+                </ActuatorList>
+              </Timeline>
+            </Box>
+            <Box name="Stand Up (3)" id="16" localization="8" tooltip="the robot tries to stand up from any position for a number of tries.&#x0A;&#x0A;Note: The number of tries can be set in parameters." x="901" y="109">
+              <bitmap>media/images/box/movement/stand.png</bitmap>
+              <script language="4">
+                <content>
+                  <![CDATA[]]>
+                </content>
+              </script>
+              <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+              <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+              <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+              <Output name="success" type="1" type_size="1" nature="1" inner="0" tooltip="Stimulated when the robot succeed in standing up." id="4" />
+              <Output name="failure" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when the robot failed to stand up after n tries.&#x0A;&#x0A;Note: The number of tries can be set in parameters." id="5" />
+              <Parameter name="Maximum of tries" inherits_from_parent="0" content_type="1" value="3" default_value="3" min="0" max="10" tooltip="The maximum number of fails of stand up before stimulating the failure output." id="6" />
+              <Timeline enable="0">
+                <BehaviorLayer name="StandUpBehavior">
+                  <BehaviorKeyframe name="DetectRobotPose" index="1">
+                    <Diagram>
+                      <Box name="Goto Posture" id="2" localization="8" tooltip="The robot goes from its current postition to the asked posture." x="331" y="92">
+                        <bitmap>media/images/box/box-diagram.png</bitmap>
+                        <script language="4">
+                          <content>
+                            <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+
+    def onLoad(self):
+        self.nTries = 0
+        self.postureService = self.session().service("ALRobotPosture")
+        pass
+
+    def onUnload(self):
+        self.postureService.stopMove()
+
+    def onInput_onStart(self):
+        if(self.nTries != self.getParameter("Maximum of tries")):
+            self.nTries = self.getParameter("Maximum of tries")
+            self.postureService.setMaxTryNumber(self.nTries)
+
+        result = self.postureService.goToPosture(self.getParameter("Name"), self.getParameter("Speed (%)")/100.)
+        if(result):
+            self.success()
+        else:
+            self.failure()
+        pass
+
+    def onInput_onStop(self):
+        self.onUnload() #~ it is recommanded to call onUnload of this box in a onStop method, as the code written in onUnload is used to stop the box as well
+        pass]]>
+                          </content>
+                        </script>
+                        <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                        <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+                        <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+                        <Output name="success" type="1" type_size="1" nature="1" inner="0" tooltip="Stimulated if the posture has been reached." id="4" />
+                        <Output name="failure" type="1" type_size="1" nature="1" inner="0" tooltip="Stimulated if the posture could not be reached." id="5" />
+                        <Parameter name="Name" inherits_from_parent="0" content_type="3" value="Stand" default_value="Stand" custom_choice="1" tooltip="Name of the posture to go to." id="6">
+                          <Choice value="Crouch" />
+                          <Choice value="LyingBack" />
+                          <Choice value="LyingBelly" />
+                          <Choice value="Sit" />
+                          <Choice value="SitRelax" />
+                          <Choice value="StandInit" />
+                          <Choice value="Stand" />
+                          <Choice value="StandZero" />
+                        </Parameter>
+                        <Parameter name="Speed (%)" inherits_from_parent="0" content_type="1" value="80" default_value="80" min="0" max="100" tooltip="Speed to go to the posture." id="7" />
+                        <Parameter name="Maximum of tries" inherits_from_parent="1" content_type="1" value="3" default_value="3" min="0" max="10" tooltip="The maximum number of fails of go to posture before stimulating the failure output." id="8" />
+                        <Resource name="All motors" type="Lock" timeout="0" />
+                        <Resource name="Stiffness" type="Lock" timeout="0" />
+                      </Box>
+                      <Link inputowner="2" indexofinput="2" outputowner="0" indexofoutput="2" />
+                      <Link inputowner="0" indexofinput="4" outputowner="2" indexofoutput="4" />
+                      <Link inputowner="0" indexofinput="5" outputowner="2" indexofoutput="5" />
+                    </Diagram>
+                  </BehaviorKeyframe>
+                </BehaviorLayer>
+              </Timeline>
+              <Resource name="All motors" type="Lock" timeout="0" />
+            </Box>
+            <Box name="Imitar" id="17" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="667" y="612">
+              <bitmap>media/images/box/movement/move.png</bitmap>
+              <script language="4">
+                <content>
+                  <![CDATA[]]>
+                </content>
+              </script>
+              <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+              <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+              <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+              <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
+              <Timeline enable="1" fps="10" start_frame="1" end_frame="25" size="25">
+                <BehaviorLayer name="behavior_layer1">
+                  <BehaviorKeyframe name="keyframe1" index="1">
+                    <Diagram />
+                  </BehaviorKeyframe>
+                </BehaviorLayer>
+                <ActuatorList model="nao">
+                  <ActuatorCurve name="LElbowRoll" actuator="LElbowRoll" mute="0" unit="0">
+                    <Key frame="8" value="-88.5" />
+                    <Key frame="10" value="-74.1" />
+                    <Key frame="14" value="-33.3" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="LElbowYaw" actuator="LElbowYaw" mute="0" unit="0">
+                    <Key frame="10" value="-69.7" />
+                    <Key frame="14" value="-69.6" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="LHand" actuator="LHand" mute="0" unit="1">
+                    <Key frame="10" value="0.32" />
+                    <Key frame="14" value="0.32" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="LShoulderPitch" actuator="LShoulderPitch" mute="0" unit="0">
+                    <Key frame="10" value="85.8" />
+                    <Key frame="14" value="86.1" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="LShoulderRoll" actuator="LShoulderRoll" mute="0" unit="0">
+                    <Key frame="10" value="-34.485" />
+                    <Key frame="14" value="11.2" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="LWristYaw" actuator="LWristYaw" mute="0" unit="0">
+                    <Key frame="10" value="-47.5" />
+                    <Key frame="14" value="-47.6605" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="" actuator="RElbowRoll" mute="0" unit="0">
+                    <Key frame="8" value="88.5" />
+                    <Key frame="9" value="79.8" />
+                    <Key frame="14" value="26.7" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="" actuator="RElbowYaw" mute="0" unit="0">
+                    <Key frame="9" value="71.6" />
+                    <Key frame="14" value="71.9" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="" actuator="RHand" mute="0" unit="1">
+                    <Key frame="9" value="0.36" />
+                    <Key frame="14" value="0.36" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="" actuator="RShoulderPitch" mute="0" unit="0">
+                    <Key frame="9" value="83.6" />
+                    <Key frame="14" value="83.6" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="" actuator="RShoulderRoll" mute="0" unit="0">
+                    <Key frame="9" value="18.9941" />
+                    <Key frame="14" value="-11.2" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="" actuator="RWristYaw" mute="0" unit="0">
+                    <Key frame="9" value="-29.3" />
+                    <Key frame="14" value="-30.6685" />
+                  </ActuatorCurve>
+                </ActuatorList>
+              </Timeline>
+            </Box>
+            <Box name="Elephant" id="18" localization="8" tooltip="ID : #04A 0001&#x0A;&#x0A;===================&#x0A;&#x0A;Tags : &#x0A;- Elephant&#x0A;" x="716" y="773">
+              <bitmap>media/images/box/movement/move.png</bitmap>
+              <script language="4">
+                <content>
+                  <![CDATA[]]>
+                </content>
+              </script>
+              <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+              <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+              <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+              <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
+              <Timeline enable="1" fps="17" start_frame="1" end_frame="-1" size="172">
+                <BehaviorLayer name="behavior_layer1">
+                  <BehaviorKeyframe name="keyframe1" index="1">
+                    <Diagram>
+                      <Box name="Play Sound" id="1" localization="8" tooltip="Play a sound file. Select the file in parameters. The format of the file can be wav or ogg (on virtual robot) and also mp3 (on a real robot).&#x0A;&#x0A;Note: There can be some delay to play ogg or mp3 (on a robot) files. We advise you to use wav if&#x0A;you want a fast play of the file." x="95" y="52">
+                        <bitmap>media/images/box/interaction/play_music.png</bitmap>
+                        <script language="4">
+                          <content>
+                            <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+
+    def onLoad(self):
+        self.bIsRunning = False
+
+    def onUnload(self):
+        self.bIsRunning = False
+
+    def onInput_onStart(self):
+        self.bIsRunning = True
+
+    def onInput_onStop(self):
+        if( self.bIsRunning ):
+            self.onUnload()
+            self.onStopped()]]>
+                          </content>
+                        </script>
+                        <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" />
+                        <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Starts the music." id="2" />
+                        <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Stops the music." id="3" />
+                        <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished or stopped." id="4" />
+                        <Parameter name="File name" inherits_from_parent="0" content_type="4" value="/elephant.ogg" default_value="" tooltip="Name of the file you want to play.&#x0A;&#x0A;Note: You can click on the folder icon to browse the project content or import&#x0A;new files to the project." id="5" />
+                        <Parameter name="Begin position (s)" inherits_from_parent="0" content_type="2" value="0" default_value="0" min="0" max="600" tooltip="Position in seconds where the playing must start." id="6" />
+                        <Parameter name="Volume (%)" inherits_from_parent="0" content_type="1" value="100" default_value="100" min="0" max="100" tooltip="Volume the file is played with." id="7" />
+                        <Parameter name="Balance L/R" inherits_from_parent="0" content_type="2" value="0" default_value="0" min="-1" max="1" tooltip="Value which determines if the sound is played more on the robot&apos;s left or right.&#x0A;You can particularly set it to:&#x0A;- -1 to play only on the left loudspeaker.&#x0A;- 0 to play on both loudspeakers.&#x0A;- 1 to play only on the right loudspeaker." id="8" />
+                        <Parameter name="Play in loop" inherits_from_parent="0" content_type="0" value="0" default_value="0" tooltip="This parameter allows to play the file in loop. The playing will start each time at&#x0A;the beginning of the file." id="9" />
+                        <Timeline enable="0">
+                          <BehaviorLayer name="behavior_layer1">
+                            <BehaviorKeyframe name="keyframe1" index="1">
+                              <Diagram>
+                                <Box name="Play Sound File" id="2" localization="8" tooltip="Play the sound." x="442" y="70">
+                                  <bitmap>media/images/box/interaction/play_music.png</bitmap>
+                                  <script language="4">
+                                    <content>
+                                      <![CDATA[import time
+
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+
+    def onLoad(self):
+        self.player = self.session().service('ALAudioPlayer')
+        self.playerStop = self.session().service('ALAudioPlayer') #Create another proxy as wait is blocking if audioout is remote
+        self.bIsRunning = False
+        self.ids = []
+
+    def onUnload(self):
+        for id in self.ids:
+            try:
+                self.playerStop.stop(id)
+            except:
+                pass
+        while( self.bIsRunning ):
+            time.sleep( 0.2 )
+
+    def onInput_onStart(self, p):
+        self.bIsRunning = True
+        try:
+            if (self.getParameter("Play in loop")) :
+               id = self.player.pCall("playFileInLoop",p,self.getParameter("Volume (%)")/100.,self.getParameter("Balance L/R"))
+            else :
+               id = self.player.pCall("playFileFromPosition",p,self.getParameter("Begin position (s)"),self.getParameter("Volume (%)")/100.,self.getParameter("Balance L/R"))
+            self.ids.append(id)
+            self.player.wait(id)
+        finally:
+            try:
+                self.ids.remove(id)
+            except:
+                pass
+            if( self.ids == [] ):
+                self.onStopped() # activate output of the box
+                self.bIsRunning = False
+
+    def onInput_onStop(self):
+        self.onUnload()]]>
+                                    </content>
+                                  </script>
+                                  <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" />
+                                  <Input name="onStart" type="3" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this Input." id="2" />
+                                  <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this Input." id="3" />
+                                  <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when Box behavior is finished." id="4" />
+                                  <Parameter name="Begin position (s)" inherits_from_parent="1" content_type="2" value="0" default_value="0" min="0" max="600" tooltip="Position in seconds where the playing must start." id="5" />
+                                  <Parameter name="Volume (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="0" max="100" tooltip="Volume the file is played with." id="6" />
+                                  <Parameter name="Balance L/R" inherits_from_parent="1" content_type="2" value="0" default_value="0" min="-1" max="1" tooltip="Value which determines if the sound is played more on the robot&apos;s left or right.&#x0A;You can particularly set it to:&#x0A;- -1 to play only on the left loudspeaker.&#x0A;- 0 to play on both loudspeakers.&#x0A;- 1 to play only on the right loudspeaker." id="7" />
+                                  <Parameter name="Play in loop" inherits_from_parent="1" content_type="0" value="0" default_value="0" tooltip="This parameter allows to play the file in loop. The playing will start each time at&#x0A;the beginning of the file." id="8" />
+                                </Box>
+                                <Box name="Get Attached File" id="1" localization="8" tooltip="Use this box to choose an attached file in its parameters. The filename will be sent on&#x0A;the output when the input is stimulated." x="216" y="71">
+                                  <bitmap>media/images/box/folder.png</bitmap>
+                                  <script language="4">
+                                    <content>
+                                      <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+
+    def onLoad(self):
+        pass
+
+    def onInput_onStart(self):
+        self.onStopped(self.behaviorAbsolutePath() + self.getParameter("File name"))]]>
+                                    </content>
+                                  </script>
+                                  <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                                  <Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="To send the filepath on the output." id="2" />
+                                  <Output name="onStopped" type="3" type_size="1" nature="2" inner="0" tooltip="The filepath of the selected resource file." id="3" />
+                                  <Parameter name="File name" inherits_from_parent="1" content_type="4" value="" default_value="" tooltip="Name of the file which is going to be sent on the box output.&#x0A;&#x0A;Note: You can click on the folder icon to browse the project content or import&#x0A;new files to the project." id="4" />
+                                </Box>
+                                <Link inputowner="0" indexofinput="4" outputowner="2" indexofoutput="4" />
+                                <Link inputowner="1" indexofinput="2" outputowner="0" indexofoutput="2" />
+                                <Link inputowner="2" indexofinput="2" outputowner="1" indexofoutput="3" />
+                              </Diagram>
+                            </BehaviorKeyframe>
+                          </BehaviorLayer>
+                        </Timeline>
+                        <Resource name="Audio player" type="Lock" timeout="0" />
+                      </Box>
+                      <Link inputowner="1" indexofinput="2" outputowner="0" indexofoutput="1" />
+                    </Diagram>
+                  </BehaviorKeyframe>
+                </BehaviorLayer>
+                <ActuatorList model="">
+                  <ActuatorCurve name="value" actuator="HeadPitch" mute="0" unit="0">
+                    <Key frame="12" value="-12.2" />
+                    <Key frame="22" value="29.5" />
+                    <Key frame="49" value="8.55243" />
+                    <Key frame="84" value="29.5" />
+                    <Key frame="111" value="8.55243" />
+                    <Key frame="144" value="29.5" />
+                    <Key frame="157" value="15.7302" />
+                    <Key frame="170" value="-11.2525" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="HeadYaw" mute="0" unit="0">
+                    <Key frame="12" value="-2.6" />
+                    <Key frame="22" value="-21.4" />
+                    <Key frame="49" value="-21.2458" />
+                    <Key frame="84" value="-21.4" />
+                    <Key frame="111" value="-21.2458" />
+                    <Key frame="144" value="-21.4" />
+                    <Key frame="157" value="2.107" />
+                    <Key frame="170" value="-1.23289" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="LElbowRoll" mute="0" unit="0">
+                    <Key frame="14" value="-48.7" />
+                    <Key frame="24" value="-88.5" />
+                    <Key frame="51" value="-88.5" />
+                    <Key frame="86" value="-88.5" />
+                    <Key frame="113" value="-88.5" />
+                    <Key frame="146" value="-88.5" />
+                    <Key frame="159" value="-70.4868" />
+                    <Key frame="172" value="-24.2557" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="LElbowYaw" mute="0" unit="0">
+                    <Key frame="24" value="0" />
+                    <Key frame="51" value="1.60444" />
+                    <Key frame="86" value="0" />
+                    <Key frame="113" value="1.60444" />
+                    <Key frame="146" value="0" />
+                    <Key frame="159" value="-77.7866" />
+                    <Key frame="172" value="-68.6458" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="LHand" mute="0" unit="1">
+                    <Key frame="14" value="0.08" />
+                    <Key frame="24" value="0.602755" />
+                    <Key frame="51" value="0.602755" />
+                    <Key frame="86" value="0.602755" />
+                    <Key frame="113" value="0.602755" />
+                    <Key frame="146" value="0.602755" />
+                    <Key frame="159" value="0.1" />
+                    <Key frame="172" value="0.3092" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="LShoulderPitch" mute="0" unit="0">
+                    <Key frame="14" value="11.2" />
+                    <Key frame="24" value="-23.1" />
+                    <Key frame="51" value="-37.4943" />
+                    <Key frame="86" value="-23.1" />
+                    <Key frame="113" value="-37.4943" />
+                    <Key frame="146" value="-23.1" />
+                    <Key frame="159" value="87.6256" />
+                    <Key frame="172" value="87.9772" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="LShoulderRoll" mute="0" unit="0">
+                    <Key frame="24" value="8.00403" />
+                    <Key frame="51" value="8.88428" />
+                    <Key frame="86" value="8.00403" />
+                    <Key frame="113" value="8.88428" />
+                    <Key frame="146" value="8.00403" />
+                    <Key frame="159" value="0.349159" />
+                    <Key frame="172" value="6.67737" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="LWristYaw" mute="0" unit="0">
+                    <Key frame="14" value="-43.9" />
+                    <Key frame="24" value="0" />
+                    <Key frame="51" value="0" />
+                    <Key frame="86" value="0" />
+                    <Key frame="113" value="0" />
+                    <Key frame="146" value="0" />
+                    <Key frame="159" value="-17.3171" />
+                    <Key frame="172" value="5.09532" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="RElbowRoll" mute="0" unit="0">
+                    <Key frame="12" value="71.5" />
+                    <Key frame="22" value="30.6" />
+                    <Key frame="36" value="2" />
+                    <Key frame="62" value="50.6986" />
+                    <Key frame="84" value="30.6" />
+                    <Key frame="98" value="2" />
+                    <Key frame="124" value="50.6986" />
+                    <Key frame="144" value="30.6" />
+                    <Key frame="157" value="73.9193" />
+                    <Key frame="170" value="23.9968" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="RElbowYaw" mute="0" unit="0">
+                    <Key frame="12" value="81.5" />
+                    <Key frame="22" value="70.8345" />
+                    <Key frame="49" value="71.103" />
+                    <Key frame="84" value="70.8345" />
+                    <Key frame="111" value="71.103" />
+                    <Key frame="144" value="70.8345" />
+                    <Key frame="157" value="80.067" />
+                    <Key frame="170" value="68.7289" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="RHand" mute="0" unit="1">
+                    <Key frame="12" value="0.66" />
+                    <Key frame="35" value="0.602465" />
+                    <Key frame="62" value="0.98" />
+                    <Key frame="97" value="0.602465" />
+                    <Key frame="124" value="0.98" />
+                    <Key frame="157" value="0.1" />
+                    <Key frame="170" value="0.308" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="RShoulderPitch" mute="0" unit="0">
+                    <Key frame="12" value="45.6" />
+                    <Key frame="22" value="30.4" />
+                    <Key frame="49" value="-28.9992" />
+                    <Key frame="84" value="30.4" />
+                    <Key frame="111" value="-28.9992" />
+                    <Key frame="144" value="30.4" />
+                    <Key frame="157" value="91.0582" />
+                    <Key frame="170" value="87.8941" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="RShoulderRoll" mute="0" unit="0">
+                    <Key frame="22" value="12.5928" />
+                    <Key frame="49" value="10.8939" />
+                    <Key frame="84" value="12.5928" />
+                    <Key frame="111" value="10.8939" />
+                    <Key frame="144" value="12.5928" />
+                    <Key frame="157" value="11.9478" />
+                    <Key frame="170" value="-7.12163" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="RWristYaw" mute="0" unit="0">
+                    <Key frame="12" value="28.3" />
+                    <Key frame="22" value="-73" />
+                    <Key frame="49" value="-72.8936" />
+                    <Key frame="84" value="-73" />
+                    <Key frame="111" value="-72.8936" />
+                    <Key frame="144" value="-73" />
+                    <Key frame="157" value="50.6232" />
+                    <Key frame="170" value="4.91954" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="LAnklePitch" mute="0" unit="0">
+                    <Key frame="22" value="-1.76024" />
+                    <Key frame="46" value="-7.03374" />
+                    <Key frame="81" value="-8.5279" />
+                    <Key frame="108" value="-7.03374" />
+                    <Key frame="141" value="-8.5279" />
+                    <Key frame="167" value="4.91954" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="LAnkleRoll" mute="0" unit="0">
+                    <Key frame="22" value="-8.25942" />
+                    <Key frame="46" value="-8.4352" />
+                    <Key frame="81" value="-7.99575" />
+                    <Key frame="108" value="-8.4352" />
+                    <Key frame="141" value="-7.99575" />
+                    <Key frame="167" value="-7.55628" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="LHipPitch" mute="0" unit="0">
+                    <Key frame="22" value="-24.1678" />
+                    <Key frame="46" value="7.38531" />
+                    <Key frame="81" value="-39.9883" />
+                    <Key frame="108" value="7.38531" />
+                    <Key frame="141" value="-39.9883" />
+                    <Key frame="167" value="7.64898" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="LHipRoll" mute="0" unit="0">
+                    <Key frame="22" value="5.80326" />
+                    <Key frame="46" value="8.61579" />
+                    <Key frame="81" value="5.01224" />
+                    <Key frame="108" value="8.61579" />
+                    <Key frame="141" value="5.01224" />
+                    <Key frame="167" value="5.45169" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="LHipYawPitch" mute="0" unit="0">
+                    <Key frame="22" value="-16.5212" />
+                    <Key frame="46" value="-10.5446" />
+                    <Key frame="81" value="-14.4997" />
+                    <Key frame="108" value="-10.5446" />
+                    <Key frame="141" value="-14.4997" />
+                    <Key frame="167" value="-8.96255" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="LKneePitch" mute="0" unit="0">
+                    <Key frame="22" value="27.8593" />
+                    <Key frame="46" value="15.5544" />
+                    <Key frame="81" value="43.7677" />
+                    <Key frame="108" value="15.5544" />
+                    <Key frame="141" value="43.7677" />
+                    <Key frame="167" value="-5.27591" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="RAnklePitch" mute="0" unit="0">
+                    <Key frame="22" value="-2.1949" />
+                    <Key frame="46" value="-4.48007" />
+                    <Key frame="81" value="-12.1267" />
+                    <Key frame="108" value="-4.48007" />
+                    <Key frame="141" value="-12.1267" />
+                    <Key frame="167" value="5.71537" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="RAnkleRoll" mute="0" unit="0">
+                    <Key frame="22" value="10.2857" />
+                    <Key frame="46" value="12.3951" />
+                    <Key frame="81" value="7.20952" />
+                    <Key frame="108" value="12.3951" />
+                    <Key frame="141" value="7.20952" />
+                    <Key frame="167" value="7.4732" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="RHipPitch" mute="0" unit="0">
+                    <Key frame="22" value="-23.1179" />
+                    <Key frame="46" value="11.3356" />
+                    <Key frame="81" value="-40.4326" />
+                    <Key frame="108" value="11.3356" />
+                    <Key frame="141" value="-40.4326" />
+                    <Key frame="167" value="7.20472" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="RHipRoll" mute="0" unit="0">
+                    <Key frame="22" value="-7.11683" />
+                    <Key frame="46" value="-11.9509" />
+                    <Key frame="81" value="-3.68905" />
+                    <Key frame="108" value="-11.9509" />
+                    <Key frame="141" value="-3.68905" />
+                    <Key frame="167" value="-5.18321" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="RHipYawPitch" mute="0" unit="0">
+                    <Key frame="22" value="-16.5212" />
+                    <Key frame="46" value="-10.5446" />
+                    <Key frame="81" value="-14.4997" />
+                    <Key frame="108" value="-10.5446" />
+                    <Key frame="141" value="-14.4997" />
+                    <Key frame="167" value="-8.96255" />
+                  </ActuatorCurve>
+                  <ActuatorCurve name="value" actuator="RKneePitch" mute="0" unit="0">
+                    <Key frame="22" value="26.7215" />
+                    <Key frame="46" value="7.56109" />
+                    <Key frame="81" value="46.6729" />
+                    <Key frame="108" value="7.56109" />
+                    <Key frame="141" value="46.6729" />
+                    <Key frame="167" value="-4.74374" />
+                  </ActuatorCurve>
+                </ActuatorList>
+              </Timeline>
+              <Resource name="Standing" type="Lock" timeout="1" />
+              <Resource name="All motors" type="Lock" timeout="1" />
+              <Resource name="Speakers" type="Lock" timeout="1" />
+            </Box>
+            <Box name="Stand Up (4)" id="19" localization="8" tooltip="the robot tries to stand up from any position for a number of tries.&#x0A;&#x0A;Note: The number of tries can be set in parameters." x="514" y="615">
               <bitmap>media/images/box/movement/stand.png</bitmap>
               <script language="4">
                 <content>
@@ -749,8 +1329,6 @@ class MyClass(GeneratedClass):
             </Box>
             <Link inputowner="1" indexofinput="2" outputowner="4" indexofoutput="4" />
             <Link inputowner="5" indexofinput="2" outputowner="1" indexofoutput="4" />
-            <Link inputowner="4" indexofinput="2" outputowner="2" indexofoutput="4" />
-            <Link inputowner="2" indexofinput="2" outputowner="3" indexofoutput="4" />
             <Link inputowner="3" indexofinput="2" outputowner="0" indexofoutput="2" />
             <Link inputowner="7" indexofinput="2" outputowner="6" indexofoutput="4" />
             <Link inputowner="9" indexofinput="2" outputowner="7" indexofoutput="4" />
@@ -762,7 +1340,13 @@ class MyClass(GeneratedClass):
             <Link inputowner="13" indexofinput="2" outputowner="12" indexofoutput="4" />
             <Link inputowner="14" indexofinput="2" outputowner="8" indexofoutput="4" />
             <Link inputowner="11" indexofinput="2" outputowner="14" indexofoutput="4" />
-            <Link inputowner="0" indexofinput="4" outputowner="13" indexofoutput="4" />
+            <Link inputowner="17" indexofinput="2" outputowner="15" indexofoutput="4" />
+            <Link inputowner="18" indexofinput="2" outputowner="17" indexofoutput="4" />
+            <Link inputowner="16" indexofinput="2" outputowner="18" indexofoutput="4" />
+            <Link inputowner="19" indexofinput="2" outputowner="13" indexofoutput="4" />
+            <Link inputowner="15" indexofinput="2" outputowner="19" indexofoutput="4" />
+            <Link inputowner="0" indexofinput="4" outputowner="16" indexofoutput="4" />
+            <Link inputowner="4" indexofinput="2" outputowner="3" indexofoutput="4" />
           </Diagram>
         </BehaviorKeyframe>
       </BehaviorLayer>
